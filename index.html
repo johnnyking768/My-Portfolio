@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>John Godwin • Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/11.3.31/motion.min.js"></script>
@@ -15,7 +15,16 @@
         }
         
         body {
-            font-family: 'Inter', system_ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        
+        /* Responsive fixes for mobile */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
         }
         
         .heading-font {
@@ -37,102 +46,306 @@
             text-shadow: 0 0 10px var(--neon),
                          0 0 20px var(--neon);
         }
+        
+        /* Mobile-first responsive adjustments */
+        @media (max-width: 768px) {
+            .container, .max-w-7xl {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+            
+            h1, .text-7xl, .text-8xl {
+                font-size: 3rem !important;
+                line-height: 1.1 !important;
+            }
+            
+            .text-3xl, .text-4xl {
+                font-size: 1.75rem !important;
+            }
+            
+            .text-6xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .text-5xl {
+                font-size: 2rem !important;
+            }
+            
+            .glass.rounded-3xl.p-10, .glass.rounded-3xl.p-12 {
+                padding: 1.5rem !important;
+            }
+            
+            .grid {
+                gap: 1.5rem;
+            }
+            
+            .absolute.inset-0.bg-\[linear-gradient\] {
+                background-size: 40px 40px !important;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .glass.rounded-3xl.p-12 {
+                padding: 1.25rem !important;
+            }
+            
+            button, .px-10, .py-5, .px-8, .py-5 {
+                padding-left: 1.25rem !important;
+                padding-right: 1.25rem !important;
+                padding-top: 0.875rem !important;
+                padding-bottom: 0.875rem !important;
+            }
+            
+            .gap-16 {
+                gap: 2rem !important;
+            }
+            
+            .text-lg {
+                font-size: 1rem !important;
+            }
+            
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .hero .relative {
+                margin-top: 2rem;
+            }
+            
+            .sticky.top-28 {
+                position: relative;
+                top: 0;
+            }
+        }
+        
+        /* Ensure images scale properly */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Touch-friendly buttons */
+        button, a, .cursor-pointer {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Smooth scrolling for mobile */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Fix for hero section on small devices */
+        @media (max-width: 768px) {
+            .hero-bg .grid {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .hero-bg .flex.items-center {
+                padding-top: 2rem;
+            }
+            
+            .w-80.h-80, .md\:w-96.md\:h-96 {
+                width: 220px;
+                height: 220px;
+                margin: 0 auto;
+            }
+            
+            .absolute.-top-8.left-8.w-72.h-72 {
+                width: 180px;
+                height: 180px;
+                top: -15px;
+                left: 15px;
+            }
+            
+            .text-\[180px\] {
+                font-size: 100px !important;
+            }
+            
+            .flex.items-center.gap-x-6 {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .flex.items-center.gap-x-8.text-sm.pt-8 {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+        
+        /* Fix for mobile menu */
+        @media (max-width: 768px) {
+            nav .flex.items-center.gap-x-3 span {
+                font-size: 1.25rem;
+            }
+            
+            #mobileMenu {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+        }
+        
+        /* Grid improvements for mobile */
+        @media (max-width: 640px) {
+            #projects-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            #skills-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem !important;
+            }
+            
+            .mt-10.flex.gap-8 {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            .text-5xl.font-bold {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            #projects-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            #skills-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+        
+        /* Better touch targets */
+        .glass.rounded-2xl, .glass.rounded-3xl {
+            transition: all 0.2s ease;
+        }
+        
+        .glass.rounded-2xl:active, .glass.rounded-3xl:active {
+            transform: scale(0.98);
+        }
+        
+        /* Fix for images on mobile */
+        .group .h-64 {
+            height: 200px;
+        }
+        
+        @media (max-width: 640px) {
+            .group .h-64 {
+                height: 180px;
+            }
+        }
+        
+        /* Adjust footer for mobile */
+        @media (max-width: 768px) {
+            footer .flex.flex-col.md\:flex-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            footer .flex.gap-x-8 {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body class="bg-[#050505] text-white overflow-x-hidden">
     <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-x-3">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-2 sm:gap-x-3">
                 <div class="w-8 h-8 rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center text-xl font-bold">JG</div>
-                <span class="heading-font text-2xl tracking-tighter">John Godwin</span>
+                <span class="heading-font text-xl sm:text-2xl tracking-tighter">John Godwin</span>
             </div>
             
-            <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
+            <div class="hidden md:flex items-center gap-x-6 lg:gap-x-10 text-sm font-medium">
                 <a href="#about" onclick="smoothScrollTo('about')" class="hover:text-cyan-400 transition-colors">About</a>
                 <a href="#projects" onclick="smoothScrollTo('projects')" class="hover:text-cyan-400 transition-colors">Projects</a>
                 <a href="#skills" onclick="smoothScrollTo('skills')" class="hover:text-cyan-400 transition-colors">Skills</a>
                 <a href="#contact" onclick="smoothScrollTo('contact')" class="hover:text-cyan-400 transition-colors">Contact</a>
             </div>
 
-            <div class="flex items-center gap-x-4">
-                <a href="https://github.com" target="_blank" class="w-9 h-9 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-all">
-                    <i class="fab fa-github text-xl"></i>
+            <div class="flex items-center gap-x-3 sm:gap-x-4">
+                <a href="https://github.com" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-all">
+                    <i class="fab fa-github text-lg sm:text-xl"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" class="w-9 h-9 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-all">
-                    <i class="fab fa-linkedin text-xl"></i>
+                <a href="https://linkedin.com" target="_blank" class="w-8 h-8 sm:w-9 sm:h-9 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-all">
+                    <i class="fab fa-linkedin text-lg sm:text-xl"></i>
                 </a>
-                <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 glass rounded-2xl flex items-center justify-center text-2xl">
+                <button onclick="toggleMobileMenu()" class="md:hidden w-9 h-9 glass rounded-2xl flex items-center justify-center text-xl">
                     ☰
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 px-8 py-6">
-            <div class="flex flex-col gap-y-6 text-lg">
-                <a href="#about" onclick="smoothScrollTo('about');toggleMobileMenu()" class="hover:text-cyan-400">About</a>
-                <a href="#projects" onclick="smoothScrollTo('projects');toggleMobileMenu()" class="hover:text-cyan-400">Projects</a>
-                <a href="#skills" onclick="smoothScrollTo('skills');toggleMobileMenu()" class="hover:text-cyan-400">Skills</a>
-                <a href="#contact" onclick="smoothScrollTo('contact');toggleMobileMenu()" class="hover:text-cyan-400">Contact</a>
+        <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 px-6 py-5">
+            <div class="flex flex-col gap-y-5 text-base sm:text-lg">
+                <a href="#about" onclick="smoothScrollTo('about');toggleMobileMenu()" class="hover:text-cyan-400 py-2 transition-colors">About</a>
+                <a href="#projects" onclick="smoothScrollTo('projects');toggleMobileMenu()" class="hover:text-cyan-400 py-2 transition-colors">Projects</a>
+                <a href="#skills" onclick="smoothScrollTo('skills');toggleMobileMenu()" class="hover:text-cyan-400 py-2 transition-colors">Skills</a>
+                <a href="#contact" onclick="smoothScrollTo('contact');toggleMobileMenu()" class="hover:text-cyan-400 py-2 transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section id="hero" class="min-h-screen hero-bg flex items-center relative pt-20">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:80px_80px] pointer-events-none"></div>
+    <section id="hero" class="min-h-screen hero-bg flex items-center relative pt-20 pb-12">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:60px_60px] sm:bg-[size:80px_80px] pointer-events-none"></div>
         
-        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8">
-                <div class="inline-flex items-center gap-x-2 px-5 py-2 glass rounded-3xl text-sm font-medium">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div class="space-y-6 sm:space-y-8 text-center md:text-left">
+                <div class="inline-flex items-center gap-x-2 px-4 py-2 glass rounded-3xl text-xs sm:text-sm font-medium mx-auto md:mx-0">
                     <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
                     AVAILABLE FOR FREELANCE
                 </div>
                 
-                <h1 class="text-7xl md:text-8xl font-bold heading-font tracking-tighter leading-none neon-text">
+                <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold heading-font tracking-tighter leading-none neon-text">
                     JOHN<br>GODWIN
                 </h1>
                 
-                <p class="text-3xl md:text-4xl text-cyan-300 font-light max-w-lg">
+                <p class="text-2xl sm:text-3xl md:text-4xl text-cyan-300 font-light max-w-lg mx-auto md:mx-0">
                     Full-Stack Engineer &amp; Digital Architect
                 </p>
                 
-                <p class="text-lg text-gray-400 max-w-md">
+                <p class="text-base sm:text-lg text-gray-400 max-w-md mx-auto md:mx-0">
                     I build immersive digital experiences that blend cutting-edge technology with beautiful design.
                 </p>
                 
-                <div class="flex items-center gap-x-6">
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 sm:gap-x-6">
                     <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
-                            class="px-10 py-5 bg-white text-black font-semibold rounded-3xl hover:scale-105 transition-all flex items-center gap-x-3">
+                            class="px-6 sm:px-10 py-3 sm:py-5 bg-white text-black font-semibold rounded-3xl hover:scale-105 transition-all flex items-center gap-x-2 sm:gap-x-3 text-sm sm:text-base">
                         SEE MY WORK
-                        <span class="text-2xl">→</span>
+                        <span class="text-xl sm:text-2xl">→</span>
                     </button>
                     
                     <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
-                            class="px-8 py-5 border border-white/30 hover:border-cyan-400 rounded-3xl font-medium transition-all">
+                            class="px-5 sm:px-8 py-3 sm:py-5 border border-white/30 hover:border-cyan-400 rounded-3xl font-medium transition-all text-sm sm:text-base">
                         LET'S CONNECT
                     </button>
                 </div>
 
-                <div class="flex items-center gap-x-8 text-sm pt-8">
-                    <div class="flex items-center gap-x-3">
-                        <div class="text-cyan-400">★★★★★</div>
-                        <div>Featured in<br><span class="text-white">Awwwards</span></div>
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-6 sm:gap-x-8 text-xs sm:text-sm pt-6 sm:pt-8">
+                    <div class="flex items-center gap-x-2 sm:gap-x-3">
+                        <div class="text-cyan-400 text-sm sm:text-base">★★★★★</div>
+                        <div>Featured in<br><span class="text-white text-xs sm:text-sm">Awards</span></div>
                     </div>
-                    <div class="h-8 w-px bg-white/20"></div>
-                    <div>Based in San Nigeria</div>
+                    <div class="h-6 sm:h-8 w-px bg-white/20 hidden sm:block"></div>
+                    <div class="text-xs sm:text-sm">Based in Nigeria</div>
                 </div>
             </div>
 
-            <div class="relative flex justify-center">
-                <div class="relative w-80 h-80 md:w-96 md:h-96">
-                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-[4rem] rotate-12 glass flex items-center justify-center shadow-2xl">
-                        <div class="text-[180px] drop-shadow-2xl">👾</div>
+            <div class="relative flex justify-center mt-8 md:mt-0">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-[3rem] sm:rounded-[4rem] rotate-12 glass flex items-center justify-center shadow-2xl">
+                        <div class="text-[120px] sm:text-[180px] drop-shadow-2xl">👾</div>
                     </div>
                     
-                    <div class="absolute -top-8 left-8 w-72 h-72 rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl">
-                        <img src="img/IMG-20250526-WA0481.jpg" alt="John Godwin" 
+                    <div class="absolute -top-5 left-5 sm:-top-8 sm:left-8 w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl">
+                        <img src="https://picsum.photos/id/100/400/400" alt="John Godwin" 
                              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
                     </div>
                 </div>
@@ -141,19 +354,19 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-24 bg-black/40">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="grid md:grid-cols-12 gap-16 items-center">
+    <section id="about" class="py-16 sm:py-24 bg-black/40">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
                 <div class="md:col-span-5">
-                    <div class="sticky top-28">
-                        <span class="uppercase text-cyan-400 text-sm tracking-[2px]">CHAPTER 01</span>
-                        <h2 class="text-6xl heading-font tracking-tighter mt-3">About Me</h2>
-                        <div class="h-1 w-12 bg-cyan-400 mt-6"></div>
+                    <div class="sticky md:top-28">
+                        <span class="uppercase text-cyan-400 text-xs sm:text-sm tracking-[2px]">CHAPTER 01</span>
+                        <h2 class="text-4xl sm:text-6xl heading-font tracking-tighter mt-2 sm:mt-3">About Me</h2>
+                        <div class="h-1 w-12 bg-cyan-400 mt-4 sm:mt-6"></div>
                     </div>
                 </div>
                 
                 <div class="md:col-span-7">
-                    <div class="glass rounded-3xl p-10 text-lg leading-relaxed text-gray-300">
+                    <div class="glass rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-base sm:text-lg leading-relaxed text-gray-300">
                         I'm a passionate full-stack engineer with 2+ years turning complex problems into elegant digital solutions. 
                         From building AI-powered SaaS platforms to crafting immersive 3D web experiences, I thrive at the intersection of design and code.
                         <br><br>
@@ -162,18 +375,18 @@
                         Currently obsessed with WebGL, AI agents, and creating interfaces that feel alive.
                     </div>
                     
-                    <div class="mt-10 flex gap-8">
-                        <div>
-                            <div class="text-5xl font-bold text-cyan-400">02</div>
-                            <div class="text-sm uppercase tracking-widest">Years Experience</div>
+                    <div class="mt-8 sm:mt-10 flex flex-wrap gap-6 sm:gap-8 justify-between sm:justify-start">
+                        <div class="text-center sm:text-left flex-1 sm:flex-none">
+                            <div class="text-4xl sm:text-5xl font-bold text-cyan-400">02</div>
+                            <div class="text-xs sm:text-sm uppercase tracking-widest">Years Experience</div>
                         </div>
-                        <div>
-                            <div class="text-5xl font-bold text-cyan-400">42</div>
-                            <div class="text-sm uppercase tracking-widest">Projects Completed</div>
+                        <div class="text-center sm:text-left flex-1 sm:flex-none">
+                            <div class="text-4xl sm:text-5xl font-bold text-cyan-400">42</div>
+                            <div class="text-xs sm:text-sm uppercase tracking-widest">Projects Completed</div>
                         </div>
-                        <div>
-                            <div class="text-5xl font-bold text-cyan-400">19</div>
-                            <div class="text-sm uppercase tracking-widest">Clients Worldwide</div>
+                        <div class="text-center sm:text-left flex-1 sm:flex-none">
+                            <div class="text-4xl sm:text-5xl font-bold text-cyan-400">19</div>
+                            <div class="text-xs sm:text-sm uppercase tracking-widest">Clients Worldwide</div>
                         </div>
                     </div>
                 </div>
@@ -181,72 +394,72 @@
         </div>
     </section>
 
-    <!-- PROJECTS - CHAPTER 02 (UPDATED) -->
-    <section id="projects" class="py-24">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="flex justify-between items-end mb-12">
+    <!-- PROJECTS - CHAPTER 02 -->
+    <section id="projects" class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8 sm:mb-12">
                 <div>
-                    <span class="uppercase text-purple-400 text-sm tracking-[2px]">CHAPTER 02</span>
-                    <h2 class="text-6xl heading-font tracking-tighter">Featured Projects</h2>
+                    <span class="uppercase text-purple-400 text-xs sm:text-sm tracking-[2px]">CHAPTER 02</span>
+                    <h2 class="text-4xl sm:text-6xl heading-font tracking-tighter mt-2">Featured Projects</h2>
                 </div>
-                <a href="#" class="text-cyan-400 flex items-center gap-x-2 group">
+                <a href="#" class="text-cyan-400 flex items-center gap-x-2 group text-sm sm:text-base">
                     VIEW ALL WORK 
-                    <span class="text-3xl group-hover:translate-x-2 transition">→</span>
+                    <span class="text-2xl sm:text-3xl group-hover:translate-x-2 transition">→</span>
                 </a>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="projects-grid">
                 <!-- Populated by JS -->
             </div>
         </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="py-24 bg-black/40">
-        <div class="max-w-7xl mx-auto px-8">
-            <span class="uppercase text-cyan-400 text-sm tracking-[2px]">CHAPTER 03</span>
-            <h2 class="text-6xl heading-font tracking-tighter mt-3 mb-12">Superpowers</h2>
+    <section id="skills" class="py-16 sm:py-24 bg-black/40">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <span class="uppercase text-cyan-400 text-xs sm:text-sm tracking-[2px]">CHAPTER 03</span>
+            <h2 class="text-4xl sm:text-6xl heading-font tracking-tighter mt-2 sm:mt-3 mb-8 sm:mb-12">Superpowers</h2>
             
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="skills-grid">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6" id="skills-grid">
                 <!-- Populated by JS -->
             </div>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-24">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="glass rounded-3xl p-12 max-w-2xl mx-auto text-center">
-                <h2 class="text-5xl heading-font tracking-tighter text-center mb-4">Let's build something legendary</h2>
-                <p class="text-center text-gray-400 mb-10">I'm currently open for new opportunities and collaborations.</p>
+    <section id="contact" class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="glass rounded-2xl sm:rounded-3xl p-6 sm:p-12 max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-5xl heading-font tracking-tighter text-center mb-3 sm:mb-4">Let's build something legendary</h2>
+                <p class="text-center text-gray-400 text-sm sm:text-base mb-6 sm:mb-10">I'm currently open for new opportunities and collaborations.</p>
                 
                 <button onclick="openWhatsApp()" 
-                        class="w-full py-7 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold text-xl rounded-3xl transition-all flex items-center justify-center gap-3">
-                    <i class="fab fa-whatsapp text-3xl"></i>
-                    CHAT WITH ME ON WHATSAPP
+                        class="w-full py-5 sm:py-7 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold text-lg sm:text-xl rounded-2xl sm:rounded-3xl transition-all flex items-center justify-center gap-3 px-4">
+                    <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
+                    <span class="text-sm sm:text-base">CHAT WITH ME ON WHATSAPP</span>
                 </button>
                 
-                <p class="text-sm text-gray-500 mt-8">Click the button above to message me directly on WhatsApp</p>
+                <p class="text-xs sm:text-sm text-gray-500 mt-6 sm:mt-8">Click the button above to message me directly on WhatsApp</p>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-y-6">
-            <div class="text-sm text-gray-400">© 2026 John Godwin. All rights reserved.</div>
-            <div class="flex gap-x-8 text-sm">
-                <a href="#" class="hover:text-cyan-400">Twitter</a>
-                <a href="#" class="hover:text-cyan-400">Instagram</a>
-                <a href="#" class="hover:text-cyan-400">Dribbble</a>
-                <a href="#" class="hover:text-cyan-400">Read.cv</a>
+    <footer class="bg-black py-8 sm:py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-y-4 sm:gap-y-6">
+            <div class="text-xs sm:text-sm text-gray-400 text-center md:text-left">© 2026 John Godwin. All rights reserved.</div>
+            <div class="flex flex-wrap justify-center gap-6 sm:gap-x-8 text-xs sm:text-sm">
+                <a href="#" class="hover:text-cyan-400 transition-colors">Twitter</a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">Instagram</a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">Dribbble</a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">Read.cv</a>
             </div>
-            <div class="text-xs text-gray-500">Built with React • Framer Motion • Tailwind</div>
+            <div class="text-[10px] sm:text-xs text-gray-500 text-center">Built with React • Framer Motion • Tailwind</div>
         </div>
     </footer>
 
     <script>
-        // Skills Data (unchanged)
+        // Skills Data
         const skillsData = [
             { name: "HTML", level: 98 },
             { name: "CSS", level: 95 },
@@ -264,12 +477,12 @@
         function renderSkills() {
             const container = document.getElementById('skills-grid')
             container.innerHTML = skillsData.map(skill => `
-                <div class="glass rounded-3xl p-6 hover:ring-2 hover:ring-cyan-400/30 transition-all">
-                    <div class="flex justify-between items-baseline mb-4">
-                        <span class="font-medium">${skill.name}</span>
-                        <span class="text-xs text-cyan-400">${skill.level}%</span>
+                <div class="glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 hover:ring-2 hover:ring-cyan-400/30 transition-all">
+                    <div class="flex justify-between items-baseline mb-3 sm:mb-4">
+                        <span class="font-medium text-sm sm:text-base">${skill.name}</span>
+                        <span class="text-[10px] sm:text-xs text-cyan-400">${skill.level}%</span>
                     </div>
-                    <div class="h-2.5 bg-white/10 rounded-3xl overflow-hidden">
+                    <div class="h-2 bg-white/10 rounded-3xl overflow-hidden">
                         <div class="h-full bg-gradient-to-r from-cyan-400 to-purple-400 rounded-3xl transition-all" 
                              style="width: ${skill.level}%"></div>
                     </div>
@@ -277,7 +490,7 @@
             `).join('')
         }
 
-        // ==================== UPDATED PROJECTS DATA (CHAPTER 02) ====================
+        // Projects Data
         const projectsData = [
             {
                 id: 1,
@@ -309,23 +522,23 @@
             const container = document.getElementById('projects-grid')
             container.innerHTML = projectsData.map(project => `
                 <div onclick="window.open('${project.link}', '_blank')" 
-                     class="group glass rounded-3xl overflow-hidden cursor-pointer hover:scale-[1.03] transition-all duration-300">
+                     class="group glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:scale-[1.02] sm:hover:scale-[1.03] transition-all duration-300">
                     <div class="relative">
-                        <img src="${project.image}" class="w-full h-64 object-cover transition-all group-hover:scale-110 duration-700">
+                        <img src="${project.image}" class="w-full h-48 sm:h-56 md:h-64 object-cover transition-all group-hover:scale-110 duration-700" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70"></div>
-                        <div class="absolute bottom-6 left-6 right-6">
-                            <div class="flex gap-x-2 mb-3">
-                                ${project.tech.map(t => `<span class="text-[10px] px-3 py-1 bg-white/10 rounded-full">${t}</span>`).join('')}
+                        <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                            <div class="flex flex-wrap gap-1 sm:gap-x-2 mb-2 sm:mb-3">
+                                ${project.tech.map(t => `<span class="text-[8px] sm:text-[10px] px-2 sm:px-3 py-0.5 sm:py-1 bg-white/10 rounded-full">${t}</span>`).join('')}
                             </div>
-                            <h3 class="text-2xl heading-font tracking-tight">${project.title}</h3>
-                            <p class="text-gray-400 text-sm mt-2">${project.description}</p>
+                            <h3 class="text-xl sm:text-2xl heading-font tracking-tight">${project.title}</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-2">${project.description}</p>
                         </div>
                     </div>
                 </div>
             `).join('')
         }
 
-        // Other functions (unchanged)
+        // Helper functions
         function openWhatsApp() {
             const phoneNumber = "2348121638903";
             const message = encodeURIComponent("Hello John Godwin, I visited your portfolio and would like to discuss a project.");
@@ -334,18 +547,45 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu')
-            menu.classList.toggle('hidden')
+            if (menu) {
+                menu.classList.toggle('hidden')
+            }
         }
 
-        function smoothScrollTo(section) {
-            document.getElementById(section).scrollIntoView({ behavior: 'smooth' })
+        function smoothScrollTo(sectionId) {
+            const element = document.getElementById(sectionId)
+            if (element) {
+                const offset = 80
+                const elementPosition = element.getBoundingClientRect().top
+                const offsetPosition = elementPosition + window.pageYOffset - offset
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                })
+            }
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobileMenu')
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden')
+            }
         }
 
         function initializePortfolio() {
             renderProjects()
             renderSkills()
-            console.log('%c✅ John Godwin Portfolio loaded successfully!', 'color:#00f5ff; font-family:monospace; font-size:13px')
+            console.log('%c✅ John Godwin Portfolio - Fully Responsive!', 'color:#00f5ff; font-family:monospace; font-size:14px')
         }
+
+        // Close mobile menu on window resize if screen becomes larger
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 768) {
+                const mobileMenu = document.getElementById('mobileMenu')
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden')
+                }
+            }
+        })
 
         window.onload = initializePortfolio
     </script>
